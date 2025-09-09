@@ -3,11 +3,11 @@ import { useEffect, useRef } from 'react';
 type Measure<T> = () => T;
 type Mutate<T> = (snap: T) => void;
 
-export default function useScrollEvent(a: any, b?: any) {
+export default function useScrollEvent(MeasureFn: any, MutateFn?: any) {
   const ticking = useRef(false);
-  const hasMeasureMutate = typeof b === 'function';
-  const measure: Measure<any> = hasMeasureMutate ? a : () => null;
-  const mutate: Mutate<any> = hasMeasureMutate ? b : a;
+  const hasMeasureMutate = typeof MutateFn === 'function';
+  const measure: Measure<any> = hasMeasureMutate ? MeasureFn : () => null;
+  const mutate: Mutate<any> = hasMeasureMutate ? MutateFn : MeasureFn;
 
   useEffect(() => {
     let lastSnap: any;
