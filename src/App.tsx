@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import { TransitionNavigationShell } from './utils/TransitionNavigationShell';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import './App.css';
@@ -12,14 +11,12 @@ export default function App() {
   return (
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <TransitionNavigationShell>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-          </Routes>
-          <Footer />
-        </TransitionNavigationShell>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+        <Footer />
       </Suspense>
     </Router>
   );
