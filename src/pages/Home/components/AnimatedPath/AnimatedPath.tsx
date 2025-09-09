@@ -25,7 +25,7 @@ const AnimatedPath = ({ wrapperRef }: AnimatedPathProps) => {
 
     p.style.strokeDasharray = `${len}`;
     p.style.strokeDashoffset = `${len}`;
-    (p.style as any).willChange = 'stroke-dashoffset';
+    p.style.willChange = 'stroke-dashoffset';
   }, []);
 
   const measure = () => {
